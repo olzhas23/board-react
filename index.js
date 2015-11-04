@@ -27,9 +27,9 @@ mongodb.MongoClient.connect(url, function (err, db) {
 	app.use(validator())  // validate requests
 	app.use(express.static('public')) // middleware to serve static files public
 
-	app.use(function(req,res,next){
+	app.use(function(req, res, next){
 		req.messages = db.collection('messages')
-		console.log(req.messages)
+		//console.log(req.messages)
 		return next()
 	})
 
@@ -44,18 +44,23 @@ mongodb.MongoClient.connect(url, function (err, db) {
 	})
 //APP POST
 
-	app.post('/messages', function(req,res, next){
-		//console.log('REQUESTS:'+req)
-		//console.log('response:', res)
-		//req.checkBody('message', 'Invalid message in body').notEmpty().isAlphanumeric()
-		//req.checkBody('name', 'Invalid name in body').notEmpty().isAlphanumeric()
+	app.post('/messages', function(req, res, next){
+		console.log('REQ',req.body)
+		req.checkBody('message', 'Invalid message in body').notEmpty()
+		req.checkBody('name', 'Invalid name in body').notEmpty()
+		var errors = req.validationErrors()
+
 		if (errors) return next(errors)
 		req.messages.insert(req.body, function (err, result){
 			if (err) return next (err)
 			return res.json(result.ops[0])
+			console.log(res.json)
 		})
 	})
 
+	app.get ('*', function (req, res, next) {
+		res.send('Server provides two endpoints GET / message and POST / messages. \n Use Postman, curl or another client to make HTTP requests')
+	})
 	app.listen(5000)
-	console.log ('running node on:')
+	console.log ('running node on port 5000')
 })
