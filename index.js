@@ -61,6 +61,6 @@ mongodb.MongoClient.connect(url, function (err, db) {
 	app.get ('*', function (req, res, next) {
 		res.send('Server provides two endpoints GET / message and POST / messages. \n Use Postman, curl or another client to make HTTP requests')
 	})
-	app.listen(5000)
+	app.listen(process.env.PORT)
 	console.log ('running node on port 5000')
 })

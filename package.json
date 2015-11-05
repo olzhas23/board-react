@@ -5,6 +5,7 @@
 	"description": "Board message with Express.js, MondoDB and React",
 	"main": "index.js",
 	"scripts": {
+		"start": "node index.js",
 		"test": "echo \"Error: no text specified\" && exit 1"
 	},
 	"keywords": [
@@ -32,5 +33,8 @@
 		"gulp-react": "^3.0.1",
 		"gulp-watch": "^4.2.4"
 
-	}
+	},
+	"engines": {
+    "node": "0.10.33"
+  }
 }
