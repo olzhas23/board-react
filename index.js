@@ -8,7 +8,7 @@ var express = require ('express'),
 	errorHandler = require('errorhandler'), //error handler midleware
 	compression = require('compression'), //gzip requsts and responses
 
-	url = 'mongodb://localhost:27017/reactdb'  //connection string to MongoDB
+	url = 'mongodb://react:react@ds049864.mlab.com:49864/reactdb'  //connection string to MongoDB
 
 
 mongodb.MongoClient.connect(url, function (err, db) {

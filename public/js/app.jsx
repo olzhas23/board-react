@@ -12,9 +12,7 @@ var Footer = React.createClass({
       <div>
         <hr />
         <div className="row-fluid">
-          <div className="span12">
-            <div>The React.js Course by Azat (<a href="http://twitter.com/azat_co" target="_blank">@azat_co</a>)</div>
-          </div>
+          <p> Sample</p>
         </div>
       </div>
     )
